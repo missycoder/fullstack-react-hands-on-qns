@@ -1,4 +1,7 @@
-import React, {useState} from 'react'
+// useState is a hook
+// a hook is a function, when called, will add
+// new functionality to a component
+import React, { useState } from 'react'
 
 function ColoredBox() {
 
@@ -18,9 +21,9 @@ function ColoredBox() {
 
     return <React.Fragment>
         <div style={{
-            border:'1px black solid',
-            width:'50px',
-            height:'50px',
+            border: '1px black solid',
+            width: '50px',
+            height: '50px',
             backgroundColor: getColor()
         }}>
         </div>
@@ -29,7 +32,7 @@ function ColoredBox() {
         <button>Green</button>
         <button>Blue</button>
     </React.Fragment>
-  
+
 }
 
 export default ColoredBox;
