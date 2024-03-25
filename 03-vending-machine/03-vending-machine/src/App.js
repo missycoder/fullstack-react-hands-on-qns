@@ -1,18 +1,12 @@
 import React from 'react';
+import Dispenser from './Dispenser'; 
 
-export default function App () {
-  
+function App() {
   return (
-      <React.Fragment>
-        <h1>Drink Vending Machine</h1>
-        <div className="display">
-        </div>
-        <button>Coffee</button>
-        <button>Tea</button>
-        <button>Orange Juice</button>
-      </React.Fragment>
-    );
-  
+    <div className="App">
+      <Dispenser />
+    </div>
+  );
 }
 
-
+export default App;
