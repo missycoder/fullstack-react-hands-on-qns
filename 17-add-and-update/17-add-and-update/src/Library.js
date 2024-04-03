@@ -87,7 +87,7 @@ export default function Library() {
                 <p>Author: {book.author}</p>
                 <p>Genre: {book.genre}</p>
                 {/* Display the tags associated with the book, joined by commas */}
-                <p>Tags: {book.tags.join(', ')}</p>
+                <p>Tags: {book.tags.join(',')}</p>
                 {/* Check if a book is currently being edited & ID matches the ID of the current book */}
                 {editingBook && editingBook.id === book.id ? (
                     <>
@@ -103,8 +103,8 @@ export default function Library() {
         ));
     };
 
-    // Function to `HANDLEINPUTCHANGE` for the new book form
-    // `handleinputchange` triggered when there is a change in the input fields of the new book form.
+    // Function to `handleInputChange` for the new book form
+    // `handleInputChange` triggered when there is a change in the input fields of the new book form.
     // Takes `event(e)` as a parameter, aka change event.
     // Inside the function, it extracts the name & value of the input field that triggered the change event from `e.target`.
     // It then updates the `newBook` state using `setNewBook` by spreading the existing newBook state 
@@ -115,8 +115,8 @@ export default function Library() {
         setNewBook({ ...newBook, [name]: value });
     };
 
-    // Function to HANDLETAGCHANGE for the new book form
-    // HANDLETAGCHANGE triggered when there is a change in the checkboxes representing tags in the new book form.
+    // Function to `hangleTagChange` for the new book form
+    // `hangleTagChange` triggered when there is a change in the checkboxes representing tags in the new book form.
     // Takes tag as a parameter, which represents the tag that has been toggled.
     const handleTagChange = (tag) => {
         // Inside the function, it checks if the tag already exists in the tags array of the newBook state.
