@@ -18,43 +18,50 @@ export default function Movies(){
     )
     const [title, setTitle] = useState("");
     const [director, setDirector] = useState("");
- 
+    const [indexToEdit, setIndexToEdit] = useState(0);
+    const [toggleState, setToggleState] = useState(false);
+
+    function toggleDisplay(){
+      setToggleState(!toggleState);
+    }
 
     function updateMovie() {
-        // 1. create the updated movie object.
-        // hint: replace the null below with the correct code
-        // hint 2: where is the data for the new movie currently stored?
-        let updatedMovie  = {
-            id: null,
-            title: null,
-            director: null
-        }
 
-        // 2. find the original index of the updated movie
+      let updatedMovie  = {
+            id: movies[indexToEdit].id,
+            title: title,
+            director: director
+      }
 
-        // 3. clone the array
+      let left = movies.slice(0, indexToEdit);
+      let right = movies.slice(indexToEdit+1);
+      let updatedMovies = [...left, updatedMovie, ...right];
+      setMovies(updatedMovies);
 
-        // 4. add the updated movie object back to its original index in
-        // the array
-
-        // 5. set the cloned array back into the state
     }
 
 
     return <React.Fragment>
       <div class="container">
         <div class="col">
-          {movies.map(m => (
+          {movies.map((m, index) => (
             <React.Fragment>
               <div class="movie">
-                <h1> {m.title} <button>Edit</button> </h1>
+                <h1> {m.title} 
+                    <button key={m.id}
+                            onClick={()=>{  toggleDisplay()
+                                            setIndexToEdit(index);
+                                            setTitle(m.title);
+                                            setDirector(m.director);
+                            }}
+                    >Edit</button> </h1>
                 <h2> Directed by {m.director} </h2>
               </div>
             </React.Fragment>
           ))}
         </div>
 
-        <div class="col" style={{display: "none"}}>
+        <div class="col" style={{display: toggleState ? "block" : "none"}}>
             <h3>Edit Movie</h3>
             <div>
                 <label>Movie Title:</label>
@@ -64,7 +71,7 @@ export default function Movies(){
                 <label>Director</label>
                 <input type="text" name="director" value={director} onChange={(event)=> setDirector(event.target.value)} />
             </div>
-            <button onClick={updateMovie}>Update Movie</button>
+            <button onClick={()=> {toggleDisplay(); updateMovie()}}>Update Movie</button>
         </div>
       </div>
     </React.Fragment>
